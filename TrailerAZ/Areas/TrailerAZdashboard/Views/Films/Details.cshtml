@@ -1,0 +1,340 @@
+﻿@model Entities.Film
+
+
+
+
+@*<div>
+        <h4>Film</h4>
+        <hr />
+        <dl class="row">
+            <dt class = "col-sm-2">
+                @Html.DisplayNameFor(model => model.Name)
+            </dt>
+            <dd class = "col-sm-10">
+                @Html.DisplayFor(model => model.Name)
+            </dd>
+            <dt class = "col-sm-2">
+                @Html.DisplayNameFor(model => model.Description)
+            </dt>
+            <dd class = "col-sm-10">
+                @Html.DisplayFor(model => model.Description)
+            </dd>
+            <dt class = "col-sm-2">
+                @Html.DisplayNameFor(model => model.Rating)
+            </dt>
+            <dd class = "col-sm-10">
+                @Html.DisplayFor(model => model.Rating)
+            </dd>
+            <dt class = "col-sm-2">
+                @Html.DisplayNameFor(model => model.Year)
+            </dt>
+            <dd class = "col-sm-10">
+                @Html.DisplayFor(model => model.Year)
+            </dd>
+            <dt class = "col-sm-2">
+                @Html.DisplayNameFor(model => model.CoverPhoto)
+            </dt>
+            <dd class = "col-sm-10">
+                @Html.DisplayFor(model => model.CoverPhoto)
+            </dd>
+            <dt class = "col-sm-2">
+                @Html.DisplayNameFor(model => model.Photo)
+            </dt>
+            <dd class = "col-sm-10">
+                @Html.DisplayFor(model => model.Photo)
+            </dd>
+            <dt class = "col-sm-2">
+                @Html.DisplayNameFor(model => model.IsNew)
+            </dt>
+            <dd class = "col-sm-10">
+                @Html.DisplayFor(model => model.IsNew)
+            </dd>
+            <dt class = "col-sm-2">
+                @Html.DisplayNameFor(model => model.IsFeatured)
+            </dt>
+            <dd class = "col-sm-10">
+                @Html.DisplayFor(model => model.IsFeatured)
+            </dd>
+            <dt class = "col-sm-2">
+                @Html.DisplayNameFor(model => model.IsTrending)
+            </dt>
+            <dd class = "col-sm-10">
+                @Html.DisplayFor(model => model.IsTrending)
+            </dd>
+            <dt class = "col-sm-2">
+                @Html.DisplayNameFor(model => model.IsMostView)
+            </dt>
+            <dd class = "col-sm-10">
+                @Html.DisplayFor(model => model.IsMostView)
+            </dd>
+            <dt class = "col-sm-2">
+                @Html.DisplayNameFor(model => model.IsTopHits)
+            </dt>
+            <dd class = "col-sm-10">
+                @Html.DisplayFor(model => model.IsTopHits)
+            </dd>
+            <dt class = "col-sm-2">
+                @Html.DisplayNameFor(model => model.AgeLimit)
+            </dt>
+            <dd class = "col-sm-10">
+                @Html.DisplayFor(model => model.AgeLimit)
+            </dd>
+            <dt class = "col-sm-2">
+                @Html.DisplayNameFor(model => model.Duration)
+            </dt>
+            <dd class = "col-sm-10">
+                @Html.DisplayFor(model => model.Duration)
+            </dd>
+            <dt class = "col-sm-2">
+                @Html.DisplayNameFor(model => model.TrailerLink)
+            </dt>
+            <dd class = "col-sm-10">
+                @Html.DisplayFor(model => model.TrailerLink)
+            </dd>
+            <dt class = "col-sm-2">
+                @Html.DisplayNameFor(model => model.MainLink)
+            </dt>
+            <dd class = "col-sm-10">
+                @Html.DisplayFor(model => model.MainLink)
+            </dd>
+            <dt class = "col-sm-2">
+                @Html.DisplayNameFor(model => model.Platform)
+            </dt>
+            <dd class = "col-sm-10">
+                @Html.DisplayFor(model => model.Platform.ID)
+            </dd>
+        </dl>
+    </div>*@
+<!-- main title -->
+<div class="col-12">
+    <div class="main__title">
+        <h2>Film Details</h2>
+    </div>
+</div>
+<!-- end main title -->
+<!-- form -->
+<div class="col-12">
+    <form class="form" method="post" enctype="multipart/form-data">
+        <div class="row">
+
+            <div class="col-12 col-md-12 form__cover">
+                <div class="row">
+                    <div class="col-12 col-sm-6 col-md-6">
+                        <div class="form__img">
+                            <label for="form__img-upload">Photo</label>
+                            <img id="form__img" src=" @Html.DisplayFor(model => model.Photo)" alt=" ">
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-md-6">
+                        <div class="form__img">
+                            <label for="form__img-upload"> Cover Photo</label>
+                            <img id="form__img" src=" @Html.DisplayFor(model => model.CoverPhoto)" alt=" ">
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-12 col-md-7 form__content">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="form__group">
+                            <input asp-for="Name" disabled class="form__input" name="Name" placeholder="Title">
+                        </div>
+                    </div>
+
+                    <div class="col-12">
+                        <div class="form__group">
+                            <textarea disabled asp-for="Description" id="text" class="form__textarea" placeholder="Description"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-sm-6 col-lg-3">
+                        <div class="form__group">
+                            <input disabled asp-for="Year" type="text" class="form__input" placeholder="Release year">
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-sm-6 col-lg-3">
+                        <div class="form__group">
+                            <input disabled asp-for="Duration" type="text" class="form__input" placeholder="Running timed in minutes">
+                        </div>
+                    </div>
+
+                    @*<div class="col-12 col-sm-6 col-lg-3">
+                    <div class="form__group">
+                        <select class="js-example-basic-single" id="quality">
+                            <option value="FullHD">FullHD</option>
+                            <option value="HD">HD</option>
+                        </select>
+                    </div>
+                </div>*@
+
+                    <div class="col-12 col-sm-6 col-lg-3">
+                        <div class="form__group">
+                            <input disabled asp-for="AgeLimit" type="text" class="form__input" placeholder="Age">
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-lg-3">
+                        <div class="form__group">
+                            <input disabled asp-for="Rating" type="text" class="form__input" placeholder="rating">
+                        </div>
+                    </div>
+
+
+                    <div class="col-12 col-lg-6">
+                        <div class="form__group">
+                            <select name="CountryID" class="js-example-basic-multiple" id="country" multiple="multiple" asp-items="ViewBag.CountryID"></select>
+
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-6">
+                        <div class="form__group">
+                            <select name="ActorID" class="js-example-basic-multiple" id="ac" multiple="multiple" asp-items="ViewBag.ActorID"></select>
+
+                        </div>
+                    </div>
+
+
+
+                    <div class="col-12 col-lg-6">
+                        @*<label style="color:white;" for="type2">Platform</label>*@
+
+                        <div style="color:#fff;" class="form__group">
+                            @*@Html.DisplayFor(model => model.Platform.PlatformName)*@
+
+                            <input disabled asp-for="Platform.PlatformName" type="text" class="form__input" placeholder="platform">
+                        </div>
+                    </div>
+
+
+                    <div class="col-12 col-lg-6">
+                        <div class="form__group">
+                            <select name="CategoryID" class="js-example-basic-multiple" id="genre" multiple="multiple" asp-items="ViewBag.CategoryID"></select>
+                            @*@Html.DisplayFor(model => model.FilmToCategory[0].CategoryID)*@
+                        </div>
+                    </div>
+
+                    @*<div class="col-12">
+                    <div class="form__gallery">
+                        <label id="gallery1" for="form__gallery-upload">Upload photos</label>
+                        <input data-name="#gallery1" id="form__gallery-upload" name="Photo" class="form__gallery-upload" type="file" accept=".png, .jpg, .jpeg" multiple>
+                    </div>
+                </div>*@
+                </div>
+            </div>
+
+            @*<div class="col-12">
+            <ul class="form__radio">
+                <li>
+                    <span>IsFeatured? :</span>
+                </li>
+
+                <li>
+
+                    <input asp-for="IsFeatured" id="type1" type="radio" value="true"  checked="">
+                    @if ()
+                    {
+
+                    }
+                    <label for="type1">Yes</label>
+                </li>
+                <li>
+                    <input id="type2" type="radio" name="type">
+                    <label for="type2">No</label>
+                </li>
+
+            </ul>
+        </div>*@
+            <div class="col-12 col-sm-6 col-lg-3">
+                <label style="color:white;" for="type2">IsFeatured?</label>
+
+                <div class="form__group">
+                    @*@Html.DisplayFor(model => model.IsFeatured)*@
+
+                    <input disabled asp-for="IsFeatured" value="@(Model.IsFeatured? "yes" : "No")" type="text" class="form__input" placeholder="featured">
+
+
+
+                </div>
+            </div>
+            <div class="col-12 col-sm-6 col-lg-3">
+                <label style="color:white;" for="type2">IsTrending?</label>
+
+                <div class="form__group">
+                    @*@Html.DisplayFor(model => model.IsTrending)*@
+
+                    <input disabled asp-for="IsTrending" value="@(Model.IsTrending? "yes" : "No")" type="text" class="form__input" placeholder="trending">
+                </div>
+            </div>
+            <div class="col-12 col-sm-6 col-lg-3">
+                <label style="color:white;" for="type2">IsMostView?</label>
+
+                <div class="form__group">
+                    @*@Html.DisplayFor(model => model.IsMostView)*@
+
+                    <input disabled asp-for="IsMostView" value="@(Model.IsMostView? "yes" : "No")" type="text" class="form__input" placeholder="mostview">
+
+                </div>
+            </div>
+            <div class="col-12 col-sm-6 col-lg-3">
+                <label style="color:white;" for="type2">IsNew?</label>
+
+                <div class="form__group">
+                    @*@Html.DisplayFor(model => model.IsNew)*@
+
+                    <input disabled asp-for="IsNew" value="@(Model.IsNew? "yes" : "No")" type="text" class="form__input" placeholder="isnew">
+
+                </div>
+            </div>
+            <div class="col-12 col-sm-6 col-lg-3">
+                <label style="color:white;" for="type2">IsTopHits?</label>
+
+                <div class="form__group">
+                    @*@Html.DisplayFor(model => model.IsTopHits)*@
+
+                    <input disabled asp-for="IsTopHits" value="@(Model.IsTopHits? "yes" : "No")" type="text" class="form__input" placeholder="topHits">
+
+                </div>
+            </div>
+
+            <div class="col-12">
+                <div class="row">
+                    @*<div class="col-12 col-lg-3">
+                    <div class="form__video">
+                        <label id="movie1" for="form__video-upload">Upload video</label>
+                        <input  data-name="#movie1" id="form__video-upload" name="movie" class="form__video-upload" type="file" accept="video/mp4,video/x-m4v,video/*">
+                    </div>
+                </div>*@
+
+                    <div class="col-12 col-lg-3">
+                        <div class="form__group form__group--link">
+                            <input disabled asp-for="MainLink" type="text" class="form__input" placeholder="add a Main link">
+                        </div>
+                    </div>
+                    @*<div class="col-12 col-lg-3">
+                    <div class="form__video">
+                        <label id="movie1" for="form__video-upload">Upload Trailer video</label>
+                        <input  data-name="#movie1" id="form__video-upload" name="movie" class="form__video-upload" type="file" accept="video/mp4,video/x-m4v,video/*">
+                    </div>
+                </div>*@
+
+                    <div class="col-12 col-lg-3">
+                        <div class="form__group form__group--link">
+                            <input disabled asp-for="TrailerLink" type="text" class="form__input" placeholder=" add a Trailer link">
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+
+            <div>
+                <a style="padding:10px 15px; background-color:darkgreen; color:#fff;" asp-action="Edit" asp-route-id="@Model.ID">Edit</a> |
+                <a asp-action="Index">Back to List</a>
+            </div>
+
+        </div>
+    </form>
+</div>
+<!-- end form -->
+

@@ -1,0 +1,156 @@
+﻿@section Styles{
+    <link rel="stylesheet" href="~/assets/css/actorDetail.css">
+
+}
+
+@model ActorVM
+
+
+<!--Main start-->
+
+<main>
+
+
+    <section class="about-actor">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-sm-12 col-md-5 col-lg-5 col-xl-5 col-xxl-5">
+                    <div class="left">
+                        <img class="img-fluid"
+                             src="@Model.GetActor.CoverPhoto" alt="">
+                    </div>
+                </div>
+                <div class="col-12 col-sm-12 col-md-7 col-lg-7 col-xl-7 col-xxl-7">
+                    <div class="right">
+                        <div class="name">
+                            <h2>@Model.GetActor.Name</h2>
+                        </div>
+                        <div class="actor-text">
+                            <p>
+                                @Model.GetActor.Wikipedia
+                            </p>
+
+                        </div>
+                        <div class="social-acc">
+                            <h6>Actors social accounts</h6>
+                            <a target="_blank" href="@Model.GetActor.InstagramLink"><i class="fab fa-instagram"></i></a>
+                            <a target="_blank" href="@Model.GetActor.FacebookLink"><i class="fab fa-facebook"></i></a>
+                            <a target="_blank" href="@Model.GetActor.TwitterLink"><i class="fab fa-twitter"></i></a>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- serie starting start -->
+    @if (Model.SerialToActors.Count > 0 && Model.SerialToActors != null)
+    {
+        <section id="PluginOne" class="serieStart-slider">
+            <div class="container">
+                <div class="row">
+                    <div class="card-name">
+                        <h3>TV series starring</h3>
+                    </div>
+                    <div class="all">
+                        @foreach (var actorSerial in Model.SerialToActors)
+                        {
+                            <div class="card-film">
+
+                                <img style="height:300px;" src="@actorSerial.Serial.Photo"
+                                     alt="">
+                                <div class="card-text">
+                                    <a href="@Url.Action("Details","Serial", new {id=actorSerial.ID })"><i class="play-btn fad fa-play-circle"></i></a>
+                                    <h5 style="display: none;">@actorSerial.Serial.Name</h5>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    }
+
+    <!-- serie starting end -->
+    <!-- serie starting start -->
+
+    @if (Model.FilmIsLeadRole.Count != 0)
+    {
+        <section style="@(Model.FilmIsLeadRole.Count==0? "display:none;": null)" id="PluginOne" class="leadSerie-slider">
+            <div class="container">
+                <div class="row">
+                    <div class="card-name">
+                        <h3>Lead role TV series</h3>
+                    </div>
+                    <div class="all">
+                        @foreach (var leadRole in Model.FilmIsLeadRole)
+                        {
+                            <div class="card-film">
+
+                                <img style="height:300px" src="@leadRole.Film.Photo"
+                                     alt="">
+                                <div class="card-text">
+                                    <a href="@Url.Action("Details","Film", new {id=leadRole.FilmID })"><i class="play-btn fad fa-play-circle"></i></a>
+                                    <h5 style="display: none;">@leadRole.Film.Name</h5>
+                                </div>
+                            </div>
+                        }
+
+
+
+                    </div>
+                </div>
+            </div>
+        </section>
+    }
+
+
+    <!-- serie starting end -->
+    <!-- film start -->
+    @if (Model.filmToActors.Count != 0)
+    {
+        <section id="PluginOne" class="film-slider">
+            <div class="container">
+                <div class="row">
+                    <div class="card-name">
+                        <h3>Films Starring</h3>
+                    </div>
+                    <div class="all">
+                        @foreach (var film in Model.filmToActors)
+                        {
+                            <div class="card-film">
+
+                                <img style="height:300px" src="@film.Film.Photo"
+                                     alt="">
+                                <div class="card-text">
+                                    <a href="@Url.Action("Details","Film", new {id=film.FilmID })"><i class="play-btn fad fa-play-circle"></i></a>
+                                    <h5 style="display: none;">@film.Film.Name</h5>
+                                </div>
+                            </div>
+                        }
+
+
+
+                    </div>
+                </div>
+            </div>
+        </section>
+    }
+
+
+    <!-- film end -->
+
+</main>
+
+<!--Main end-->
+
+
+@section Scripts{
+
+    <script src="~/assets/js/actorDetail.js"></script>
+
+}

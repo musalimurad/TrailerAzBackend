@@ -1,0 +1,121 @@
+﻿@model ActorVM
+
+@section Styles{
+
+    <link rel="stylesheet" href="~/assets/css/actor.css">
+
+}
+
+
+<!-- Search section start -->
+
+<section class="search">
+    <div class="container">
+        <div class="row">
+            <div class="search-item ">
+                <input class="search-inp " type="search" name="Search-Film " id="" placeholder="Search Actor...">
+                <input class="submit-btn " type="submit" value="search">
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Search section End -->
+<!--  favorite actors start -->
+
+<section style="@(Model.ActorIsFeatured.Count==0? "display:none;" : null)" id="PluginOne" class="actor-slider">
+    <div class="container">
+        <div class="row">
+            <div class="card-name">
+                <h3>Favorite Actors</h3>
+            </div>
+            <div class="all">
+                @foreach (var actor in Model.ActorIsFeatured)
+                {
+                    <div class="card-actor">
+
+                        <img src="@actor.Photo" alt="">
+                        <div class="card-text">
+                            <a href="@Url.Action("Details","Actor", new { id=actor.ID})"><i class="play-btn fas fa-info-circle"></i></a>
+                            <h5 style="display: none;">@actor.Name</h5>
+                        </div>
+                    </div>
+                }
+
+
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- favorite actors end -->
+<!-- Actors start -->
+
+<section class="actors">
+    <div class="container">
+        <div class="row">
+            <div class="detail-head col-12 col-sm-12 col-md-12 col-xl-12 col-lg-12">
+                <h4>Actors</h4>
+            </div>
+            @foreach (var actor in Model.Actors)
+            {
+                <div class="col-md-4 col-6 col-sm-4 col-lg-3 col-xl-3">
+                    <div class="actor-detail">
+                        <div class="detail-img">
+                            <img class="img-fluid"
+                                 src="@actor.Photo"
+                                 alt="">
+
+                        </div>
+                        <div class="detail-text">
+                            <h5>@actor.Name</h5>
+                            <p><a href="@Url.Action("Details", "Actor", new { id=actor.ID})">Read More...</a></p>
+                        </div>
+                    </div>
+
+                </div>
+            }
+
+           
+                <div class="load-more col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                    <button>Load More</button>
+                </div>
+            
+
+        </div>
+
+    </div>
+</section>
+
+<!-- Actors End -->
+
+@section Scripts{
+
+    <script src="~/assets/js/actor.js"></script>
+
+    <script>
+        let skipCount = 0;
+        $(".btnLoad").click(function () {
+            skipCount += 1;
+            $.ajax({
+                url: "/Home/FindActor",
+                data: { skipCount },
+                type: "Json",
+                success: function (e) {
+                    console.log(e)
+                    $("#actorArea .row").append(e)
+                    if (e != null) {
+                        $(".btnLoad").fadeIn();
+
+                    }
+                    else {
+                        $(".btnLoad").fadeOut();
+                    }
+                }
+            })
+        })
+    </script>
+
+}

@@ -1,0 +1,607 @@
+* {
+  margin: 0%;
+  padding: 0%;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.Header {
+    background-color: #131720;
+    padding: 8px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 9999;
+}
+
+    .Header .Header-Ico a {
+        text-decoration: none;
+    }
+
+    .Header .Header-Ico h1 {
+        color: #fff;
+        font-weight: 400;
+        font-size: 32px;
+    }
+
+        .Header .Header-Ico h1 i {
+            color: #1a4da7;
+        }
+
+    .Header .Header-Nav {
+        display: contents;
+    }
+
+        .Header .Header-Nav ul {
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            color: #fff;
+            margin-top: 15px;
+        }
+
+            .Header .Header-Nav ul li {
+                list-style: none;
+                margin-left: 16px;
+                cursor: pointer;
+                -webkit-transition: .4s ease-in-out;
+                transition: .4s ease-in-out;
+                font-size: 14px;
+                font-weight: 500;
+                letter-spacing: 1.5px;
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            }
+
+                .Header .Header-Nav ul li:hover i {
+                    -webkit-transition: .4s;
+                    transition: .4s;
+                    -webkit-transform: rotate(-360deg);
+                    transform: rotate(-360deg);
+                }
+
+                .Header .Header-Nav ul li i {
+                    font-size: 20px;
+                }
+
+                .Header .Header-Nav ul li:hover {
+                    color: #1a4da7;
+                }
+
+                .Header .Header-Nav ul li a {
+                    text-decoration: none;
+                    color: #fff;
+                    -webkit-transition: .4s ease-in-out;
+                    transition: .4s ease-in-out;
+                }
+
+                    .Header .Header-Nav ul li a:hover {
+                        color: #1a4da7;
+                    }
+
+    .Header .profil {
+        background-color: #131720;
+        padding: 8px 0;
+    }
+
+        .Header .profil i {
+            font-size: 36px;
+            color: #2156b3;
+        }
+
+        .Header .profil a {
+            color: #fff;
+            font-weight: 500;
+            text-decoration: none;
+            font-size: 16px;
+            margin-left: 10px;
+            -webkit-transition: .5s ease-in-out;
+            transition: .5s ease-in-out;
+        }
+
+            .Header .profil a:hover {
+                color: #1a4da7;
+            }
+
+.Responsive-Header {
+    background-color: #131720;
+    padding: 8px;
+    display: none;
+    top: 0%;
+    width: 100%;
+    position: fixed;
+    -webkit-transition: .4s ease-in-out;
+    transition: .4s ease-in-out;
+    z-index: 9999;
+}
+
+    .Responsive-Header .All-Responsive {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+    }
+
+        .Responsive-Header .All-Responsive .Responsive-Logo a {
+            text-decoration: none;
+            font-size: 22px;
+        }
+
+        .Responsive-Header .All-Responsive .Responsive-Logo h4 {
+            color: #fff;
+            font-weight: bold;
+            margin-top: 5px;
+            font-size: 17px;
+        }
+
+            .Responsive-Header .All-Responsive .Responsive-Logo h4 i {
+                color: #1a4da7;
+            }
+
+        .Responsive-Header .All-Responsive .Navbar-Ico {
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -ms-flex-pack: distribute;
+            justify-content: space-around;
+        }
+
+            .Responsive-Header .All-Responsive .Navbar-Ico ul {
+                position: absolute;
+                overflow: hidden;
+                -webkit-transform: translate(-50%, -50%);
+                transform: translate(-50%, -50%);
+                width: 30px;
+                height: 30px;
+                cursor: pointer;
+            }
+
+                .Responsive-Header .All-Responsive .Navbar-Ico ul li {
+                    list-style: none;
+                    position: absolute;
+                    background: #fff;
+                    width: 100%;
+                    height: 3px;
+                    -webkit-transform: translateY(-50%);
+                    transform: translateY(-50%);
+                    -webkit-transition: 0.5s;
+                    transition: 0.5s;
+                }
+
+                    .Responsive-Header .All-Responsive .Navbar-Ico ul li:nth-of-type(1) {
+                        top: 20%;
+                    }
+
+                    .Responsive-Header .All-Responsive .Navbar-Ico ul li:nth-of-type(2) {
+                        top: 50%;
+                    }
+
+                    .Responsive-Header .All-Responsive .Navbar-Ico ul li:nth-of-type(3),
+                    .Responsive-Header .All-Responsive .Navbar-Ico ul li:nth-of-type(4) {
+                        width: 50%;
+                        top: 80%;
+                    }
+
+                    .Responsive-Header .All-Responsive .Navbar-Ico ul li:nth-of-type(1),
+                    .Responsive-Header .All-Responsive .Navbar-Ico ul li:nth-of-type(2),
+                    .Responsive-Header .All-Responsive .Navbar-Ico ul li:nth-of-type(3) {
+                        left: 0;
+                    }
+
+                    .Responsive-Header .All-Responsive .Navbar-Ico ul li:nth-of-type(4) {
+                        right: 0;
+                    }
+
+                .Responsive-Header .All-Responsive .Navbar-Ico ul.active li:nth-of-type(1) {
+                    top: 50%;
+                    -webkit-transform: translateY(-50%) rotate(45deg);
+                    transform: translateY(-50%) rotate(45deg);
+                }
+
+                .Responsive-Header .All-Responsive .Navbar-Ico ul.active li:nth-of-type(2) {
+                    top: 50%;
+                    -webkit-transform: translateY(-50%) rotate(-45deg);
+                    transform: translateY(-50%) rotate(-45deg);
+                }
+
+                .Responsive-Header .All-Responsive .Navbar-Ico ul.active li:nth-of-type(3) {
+                    left: -50%;
+                    opacity: 0;
+                }
+
+                .Responsive-Header .All-Responsive .Navbar-Ico ul.active li:nth-of-type(4) {
+                    right: -50%;
+                    opacity: 0;
+                }
+
+#Menu-content {
+    background-color: #1b202c;
+    opacity: 0;
+    visibility: hidden;
+    width: 100%;
+    -webkit-transition: .4s;
+    transition: .4s;
+    margin-top: 14px;
+    position: fixed;
+    z-index: 99999;
+    height: 0vh;
+}
+
+    #Menu-content ul {
+        margin-bottom: 0;
+        padding-top: 30px;
+    }
+
+        #Menu-content ul li {
+            list-style: none;
+            color: #fff;
+            cursor: pointer;
+            font-size: 30px;
+            text-align: center;
+            padding-top: 10px;
+            -webkit-transition: .4s ease-in-out;
+            transition: .4s ease-in-out;
+        }
+
+            #Menu-content ul li:hover {
+                color: #1a4da7;
+            }
+
+                #Menu-content ul li:hover i {
+                    -webkit-transition: .4s ease-in-out;
+                    transition: .4s ease-in-out;
+                    -webkit-transform: rotate(360deg);
+                    transform: rotate(360deg);
+                }
+
+                #Menu-content ul li:hover a {
+                    color: #1a4da7;
+                    font-size: 30px;
+                }
+
+            #Menu-content ul li a {
+                -webkit-transition: .4s ease-in-out;
+                transition: .4s ease-in-out;
+                text-decoration: none;
+                color: #fff;
+            }
+
+    #Menu-content .profil {
+        background-color: #131720;
+        padding: 8px 0;
+    }
+
+        #Menu-content .profil i {
+            font-size: 36px;
+            color: #2156b3;
+        }
+
+        #Menu-content .profil a {
+            color: #fff;
+            font-weight: 500;
+            text-decoration: none;
+            font-size: 16px;
+            margin-left: 10px;
+            -webkit-transition: .5s ease-in-out;
+            transition: .5s ease-in-out;
+        }
+
+            #Menu-content .profil a:hover {
+                color: #1a4da7;
+            }
+
+.login-register {
+  background-image: url(https://images.unsplash.com/photo-1524985069026-dd778a71c7b4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1902&q=80);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 100%;
+  height: 97vh;
+  overflow: hidden;
+}
+
+.login-register *,
+.login-register :after,
+.login-register :before {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.login-register .clearfix:after,
+.login-register .clearfix:before {
+  content: "";
+  display: table;
+}
+
+.login-register .clearfix:after {
+  clear: both;
+  display: block;
+}
+
+.login-register a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.login-register .login-wrap {
+  width: 100%;
+  margin: auto;
+  max-width: 525px;
+  position: relative;
+  -webkit-box-shadow: 0 12px 15px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+          box-shadow: 0 12px 15px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+}
+
+.login-register .login-html {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  padding: 90px 70px 50px 70px;
+}
+
+.login-register a:hover {
+  color: #1a4da7;
+}
+
+.login-register .login-html .sign-in-htm,
+.login-register .login-html .sign-up-htm {
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  position: absolute;
+  -webkit-transform: rotateY(180deg);
+          transform: rotateY(180deg);
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+  -webkit-transition: all 0.4s linear;
+  transition: all 0.4s linear;
+}
+
+.login-register .login-html .sign-in,
+.login-register .login-html .sign-up,
+.login-register .login-form .group .check {
+  display: none;
+}
+
+.login-register .login-html .tab,
+.login-register .login-form .group .label,
+.login-register .login-form .group .button {
+  text-transform: uppercase;
+}
+
+.login-register .login-html .tab {
+  font-size: 22px;
+  margin-right: 15px;
+  color: #1161ee;
+  padding-bottom: 5px;
+  margin: 0 15px 10px 0;
+  display: inline-block;
+  border-bottom: 2px solid transparent;
+}
+
+.login-register .login-html .sign-in:checked + .tab,
+.login-register .login-html .sign-up:checked + .tab {
+  color: #fff;
+  border-color: #1161ee;
+}
+
+.login-register .login-form {
+  min-height: 345px;
+  position: relative;
+  -webkit-perspective: 1000px;
+          perspective: 1000px;
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+}
+
+.login-register .login-form .group {
+  margin-bottom: 15px;
+}
+
+.login-register .login-form .group .label,
+.login-register .login-form .group .input,
+.login-register .login-form .group .button {
+  width: 100%;
+  color: #fff;
+  display: block;
+}
+
+.login-register .login-form .group .label:focus,
+.login-register .login-form .group .input:focus,
+.login-register .login-form .group .button:focus {
+  outline: none;
+}
+
+.login-register .login-form .group .input,
+.login-register .login-form .group .button {
+  border: none;
+  padding: 15px 20px;
+  border-radius: 25px;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.login-register .login-form .group input[data-type="password"] {
+  -webkit-text-security: circle;
+}
+
+.login-register .login-form .group .label {
+  color: #fff;
+  font-size: 12px;
+}
+
+.login-register .login-form .group .button {
+  background: #1161ee;
+}
+
+.login-register .login-form .group label .icon {
+  width: 15px;
+  height: 15px;
+  border-radius: 2px;
+  position: relative;
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.login-register .login-form .group label .icon:before,
+.login-register .login-form .group label .icon:after {
+  content: "";
+  width: 10px;
+  height: 2px;
+  background: #fff;
+  position: absolute;
+  -webkit-transition: all 0.2s ease-in-out 0s;
+  transition: all 0.2s ease-in-out 0s;
+}
+
+.login-register .login-form .group label .icon:before {
+  left: 3px;
+  width: 5px;
+  bottom: 6px;
+  -webkit-transform: scale(0) rotate(0);
+          transform: scale(0) rotate(0);
+}
+
+.login-register .login-form .group label .icon:after {
+  top: 6px;
+  right: 0;
+  -webkit-transform: scale(0) rotate(0);
+          transform: scale(0) rotate(0);
+}
+
+.login-register .login-form .group .check:checked + label {
+  color: #fff;
+}
+
+.login-register .login-form .group .check:checked + label .icon:before {
+  -webkit-transform: scale(1) rotate(45deg);
+          transform: scale(1) rotate(45deg);
+}
+
+.login-register .login-form .group .check:checked + label .icon:after {
+  -webkit-transform: scale(1) rotate(-45deg);
+          transform: scale(1) rotate(-45deg);
+}
+
+.login-register .login-html .sign-in:checked + .tab + .sign-up + .tab + .login-form .sign-in-htm {
+  -webkit-transform: rotate(0);
+          transform: rotate(0);
+  color: #1161ee;
+}
+
+.login-register .login-html .sign-up:checked + .tab + .login-form .sign-up-htm {
+  -webkit-transform: rotate(0);
+          transform: rotate(0);
+}
+
+footer {
+  background-image: url(https://www.savebutonu.com/wp-content/uploads/2020/04/sex-education-3-sezon.jpg);
+  position: relative;
+  overflow: hidden;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+footer .copyRight {
+  z-index: 999;
+  color: #fff;
+  text-align: center;
+  margin-top: 90px;
+}
+
+footer .copyRight h4 {
+  font-size: 30px;
+  -webkit-filter: brightness(0.5);
+          filter: brightness(0.5);
+  -webkit-transition: .5s ease-in-out;
+  transition: .5s ease-in-out;
+  cursor: default;
+}
+
+footer .copyRight h4:hover {
+  -webkit-filter: brightness(1);
+          filter: brightness(1);
+}
+
+footer .copyRight i {
+  font-size: 30px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  -webkit-transition: .4s;
+  transition: .4s;
+  color: #fff;
+}
+
+footer .copyRight i:hover {
+  -webkit-transform: rotate(-360deg);
+          transform: rotate(-360deg);
+  color: #1a4da7;
+}
+
+footer .copyRight p {
+  -webkit-transition: .5s ease-in-out;
+  transition: .5s ease-in-out;
+  cursor: default;
+  font-size: 18px;
+}
+
+footer .copyRight p a {
+  text-decoration: none;
+  color: #fff;
+  -webkit-transition: .5s ease-in-out;
+  transition: .5s ease-in-out;
+  font-weight: 600;
+}
+
+footer .copyRight p a:hover {
+  text-decoration: underline;
+}
+
+footer .overlay {
+  z-index: 1;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  height: 100vh;
+  background: -webkit-gradient(linear, left top, left bottom, from(#131720), color-stop(#0c0f14), color-stop(#0d1016), to(#131720));
+  background: linear-gradient(#131720, #0c0f14, #0d1016, #131720);
+  opacity: 0.8;
+  -webkit-filter: drop-shadow(20px);
+  filter: drop-shadow(20px);
+}
+
+@media (min-width: 220px) and (max-width: 991px) {
+  .Header .Header-All {
+    display: none;
+  }
+  .Responsive-Header {
+    display: block;
+  }
+  #Menu-content ul li {
+    font-size: 18px;
+    padding-top: 0px;
+    padding-bottom: 9px;
+  }
+}
+
+::-webkit-scrollbar {
+  background-color: #151f30;
+  width: 12px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: -webkit-gradient(linear, left top, left bottom, from(transparent), color-stop(#1a4da7), to(#1a4da7));
+  background: linear-gradient(transparent, #1a4da7, #1a4da7);
+  border-radius: 6px;
+  -webkit-transition: .5s;
+  transition: .5s;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: -webkit-gradient(linear, left top, left bottom, from(transparent), color-stop(#0d1422), to(#1a4da7));
+  background: linear-gradient(transparent, #0d1422, #1a4da7);
+}
+/*# sourceMappingURL=login-register.css.map */

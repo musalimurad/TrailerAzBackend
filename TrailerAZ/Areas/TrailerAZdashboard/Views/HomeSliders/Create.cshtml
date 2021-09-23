@@ -1,0 +1,106 @@
+﻿@model Entities.HomeSlider
+
+
+@*<h1>Create</h1>
+
+    <h4>HomeSlider</h4>
+    <hr />
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="Create">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="Photo" class="control-label"></label>
+                    <input asp-for="Photo" class="form-control" />
+                    <span asp-validation-for="Photo" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Name" class="control-label"></label>
+                    <input asp-for="Name" class="form-control" />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="SubName" class="control-label"></label>
+                    <input asp-for="SubName" class="form-control" />
+                    <span asp-validation-for="SubName" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="AllName" class="control-label"></label>
+                    <input asp-for="AllName" class="form-control" />
+                    <span asp-validation-for="AllName" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Create" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+    </div>*@
+
+
+
+<!-- main title -->
+<div class="col-12">
+    <div class="main__title">
+        <h2>Add new Actor</h2>
+    </div>
+</div>
+<!-- end main title -->
+<!-- form -->
+<div class="col-12">
+    <form class="form" method="post" enctype="multipart/form-data">
+        <div class="row">
+            <div class="col-12 col-md-5 form__cover">
+                <div class="row">
+                    <div class="col-12 col-sm-6 col-md-12">
+                        <div class="form__img">
+                            <label for="form__img-upload">Upload cover</label>
+                            <input asp-for="Photo" id="form__img-upload" name="photo" type="file" accept=".png, .jpg, .jpeg">
+                            <img id="form__img" src="#" alt=" ">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-md-7 form__content">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="form__group">
+                            <input asp-for="Name" type="text" class="form__input" name="Name" placeholder="Name">
+                        </div>
+                    </div>
+
+                    
+
+                    <div class="col-12 col-sm-6 col-lg-3">
+                        <div class="form__group">
+                            <input asp-for="SubName" type="text" class="form__input" placeholder="Subname">
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-sm-6 col-lg-3">
+                        <div class="form__group">
+                            <input asp-for="AllName" type="text" class="form__input" placeholder="All name">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="row">
+
+
+                    <div class="col-12">
+                        <button type="submit" value="Create" class="form__btn">publish</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+    <div>
+        <a asp-action="Index">Back to List</a>
+    </div>
+
+</div>
+<!-- end form -->
+
+
+

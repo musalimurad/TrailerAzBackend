@@ -1,0 +1,19 @@
+﻿@model SerialVM
+
+
+@foreach (var serial in Model.Serials)
+{
+    <div class="movie-card col-6 col-sm-4 col-md-4 col-lg-4 col-xl-4">
+        <a href="@Url.Action("Details", "Serial", new {id=serial.ID })">
+            <div class="movie-img">
+                <img class="img-fluid"
+                     src="@serial.Photo"
+                     alt="">
+                <i class="fas fa-eye"></i>
+            </div>
+        </a>
+        <div class="movie-text">
+            <h4>@serial.Name</h4>
+        </div>
+    </div>
+}

@@ -1,0 +1,313 @@
+﻿@model Entities.Serial
+
+@*<div class="row">
+        <div class="col-md-4">
+            <form asp-action="Create">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="Name" class="control-label"></label>
+                    <input asp-for="Name" class="form-control" />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Description" class="control-label"></label>
+                    <input asp-for="Description" class="form-control" />
+                    <span asp-validation-for="Description" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Rating" class="control-label"></label>
+                    <input asp-for="Rating" class="form-control" />
+                    <span asp-validation-for="Rating" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Year" class="control-label"></label>
+                    <input asp-for="Year" class="form-control" />
+                    <span asp-validation-for="Year" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="CoverPhoto" class="control-label"></label>
+                    <input asp-for="CoverPhoto" class="form-control" />
+                    <span asp-validation-for="CoverPhoto" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Photo" class="control-label"></label>
+                    <input asp-for="Photo" class="form-control" />
+                    <span asp-validation-for="Photo" class="text-danger"></span>
+                </div>
+                <div class="form-group form-check">
+                    <label class="form-check-label">
+                        <input class="form-check-input" asp-for="IsNew" /> @Html.DisplayNameFor(model => model.IsNew)
+                    </label>
+                </div>
+                <div class="form-group form-check">
+                    <label class="form-check-label">
+                        <input class="form-check-input" asp-for="IsFeatured" /> @Html.DisplayNameFor(model => model.IsFeatured)
+                    </label>
+                </div>
+                <div class="form-group form-check">
+                    <label class="form-check-label">
+                        <input class="form-check-input" asp-for="IsTrending" /> @Html.DisplayNameFor(model => model.IsTrending)
+                    </label>
+                </div>
+                <div class="form-group form-check">
+                    <label class="form-check-label">
+                        <input class="form-check-input" asp-for="IsMostView" /> @Html.DisplayNameFor(model => model.IsMostView)
+                    </label>
+                </div>
+                <div class="form-group">
+                    <label asp-for="AgeLimit" class="control-label"></label>
+                    <input asp-for="AgeLimit" class="form-control" />
+                    <span asp-validation-for="AgeLimit" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="PlatformID" class="control-label"></label>
+                    <select asp-for="PlatformID" class ="form-control" asp-items="ViewBag.PlatformID"></select>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Create" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+    </div>*@
+
+
+<!-- main title -->
+<div class="col-12">
+    <div class="main__title">
+        <h2>Add new Serial</h2>
+    </div>
+</div>
+<!-- end main title -->
+<!-- form -->
+<div class="col-12">
+    <form class="form" method="post" enctype="multipart/form-data">
+        <div class="row">
+            <div class="col-12 col-md-5 form__cover">
+                <div class="row">
+                    <div class="col-12 col-sm-12 col-md-12">
+                        <div class="form__img">
+                            <label for="form__img-upload">Upload cover</label>
+                            <input asp-for="CoverPhoto" id="form__img-upload" name="CoverPhoto" type="file" accept=".png, .jpg, .jpeg">
+                            <img id="form__img" src="#" alt=" ">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-md-7 form__content">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="form__group">
+                            <input asp-for="Name" type="text" class="form__input" name="Name" placeholder="Title">
+                        </div>
+                    </div>
+
+                    <div class="col-12">
+                        <div class="form__group">
+                            <textarea asp-for="Description" id="text" class="form__textarea" placeholder="Description"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-sm-6 col-lg-3">
+                        <div class="form__group">
+                            <input asp-for="Year" type="text" class="form__input" placeholder="Release year">
+                        </div>
+                    </div>
+
+                   
+
+                    @*<div class="col-12 col-sm-6 col-lg-3">
+                            <div class="form__group">
+                                <select class="js-example-basic-single" id="quality">
+                                    <option value="FullHD">FullHD</option>
+                                    <option value="HD">HD</option>
+                                </select>
+                            </div>
+                        </div>*@
+
+                    <div class="col-12 col-sm-6 col-lg-3">
+                        <div class="form__group">
+                            <input asp-for="AgeLimit" type="text" class="form__input" placeholder="Age">
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-lg-3">
+                        <div class="form__group">
+                            <input asp-for="Rating" type="text" class="form__input" placeholder="rating">
+                        </div>
+                    </div>
+
+
+                    <div class="col-12 col-lg-6">
+                        <div class="form__group">
+                            <select name="CountryID" class="js-example-basic-multiple" id="country" multiple="multiple" asp-items="ViewBag.CountryID"></select>
+
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-6">
+                        <div class="form__group">
+                            <select name="ActorID" class="js-example-basic-multiple" id="ac" multiple="multiple" asp-items="ViewBag.ActorID"></select>
+
+                        </div>
+                    </div>
+
+
+
+                    <div class="col-12 col-lg-6">
+                        <div class="form__group">
+
+                            <select name="PlatformID" class="js-example-basic-multiple" id="Platform" asp-items="ViewBag.PlatformID"></select>
+
+                        </div>
+                    </div>
+
+                     
+                    <div class="col-12 col-lg-6">
+                        <div class="form__group">
+                            <select name="CategoryID" class="js-example-basic-multiple" id="genre" multiple="multiple" asp-items="ViewBag.CategoryID"></select>
+
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-lg-6">
+                        <div class="form__gallery">
+                            <label id="gallery1" for="form__gallery-upload">Upload photos</label>
+                            <input asp-for="Photo" data-name="#gallery1" id="form__gallery-upload" name="Photo" class="form__gallery-upload" type="file" accept=".png, .jpg, .jpeg" multiple>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            @*<div class="col-12">
+                    <ul class="form__radio">
+                        <li>
+                            <span>IsFeatured? :</span>
+                        </li>
+
+                        <li>
+
+                            <input asp-for="IsFeatured" id="type1" type="radio" value="true"  checked="">
+                            @if ()
+                            {
+
+                            }
+                            <label for="type1">Yes</label>
+                        </li>
+                        <li>
+                            <input id="type2" type="radio" name="type">
+                            <label for="type2">No</label>
+                        </li>
+
+                    </ul>
+                </div>*@
+            <div class="col-12 col-sm-6 col-lg-3">
+                <label style="color:white;" for="type2">IsFeatured?</label>
+
+                <div class="form__group">
+                    <select asp-for="IsFeatured" class="js-example-basic-multiple" id="quality">
+                        <option value="True">Yes</option>
+                        <option value="False">no</option>
+
+
+                    </select>
+
+
+                </div>
+            </div>
+            <div class="col-12 col-sm-6 col-lg-3">
+                <label style="color:white;" for="type2">IsTrending?</label>
+
+                <div class="form__group">
+                    <select asp-for="IsTrending" class="js-example-basic-multiple" id="trend">
+                        <option value="True">Yes</option>
+                        <option value="False">no</option>
+
+
+                    </select>
+
+
+                </div>
+            </div>
+            <div class="col-12 col-sm-6 col-lg-3">
+                <label style="color:white;" for="type2">IsMostView?</label>
+
+                <div class="form__group">
+                    <select asp-for="IsMostView" class="js-example-basic-multiple" id="most">
+                        <option value="True">Yes</option>
+                        <option value="False">no</option>
+
+
+                    </select>
+
+
+                </div>
+            </div>
+            <div class="col-12 col-sm-6 col-lg-3">
+                <label style="color:white;" for="type2">IsNew?</label>
+
+                <div class="form__group">
+                    <select asp-for="IsNew" class="js-example-basic-multiple" id="new">
+                        <option value="True">Yes</option>
+                        <option value="False">no</option>
+
+
+                    </select>
+
+
+                </div>
+            </div>
+            @*<div class="col-12 col-sm-6 col-lg-3">
+                <label style="color:white;" for="type2">IsTopHits?</label>
+
+                <div class="form__group">
+                    <select asp-for="IsTopHits" class="js-example-basic-multiple" id="top">
+                        <option value="True">Yes</option>
+                        <option value="False">No</option>
+
+
+                    </select>
+
+
+                </div>
+            </div>*@
+
+            <div class="col-12">
+                <div class="row">
+                    @*<div class="col-12 col-lg-3">
+                            <div class="form__video">
+                                <label id="movie1" for="form__video-upload">Upload video</label>
+                                <input  data-name="#movie1" id="form__video-upload" name="movie" class="form__video-upload" type="file" accept="video/mp4,video/x-m4v,video/*">
+                            </div>
+                        </div>*@
+
+                    @*<div class="col-12 col-lg-3">
+                        <div class="form__group form__group--link">
+                            <input asp-for="IsMostView" type="text" class="form__input" placeholder="add a Main link">
+                        </div>
+                    </div>*@
+                    @*<div class="col-12 col-lg-3">
+                            <div class="form__video">
+                                <label id="movie1" for="form__video-upload">Upload Trailer video</label>
+                                <input  data-name="#movie1" id="form__video-upload" name="movie" class="form__video-upload" type="file" accept="video/mp4,video/x-m4v,video/*">
+                            </div>
+                        </div>*@
+
+                    @*<div class="col-12 col-lg-3">
+                        <div class="form__group form__group--link">
+                            <input asp-for="TrailerLink" type="text" class="form__input" placeholder=" add a Trailer link">
+                        </div>
+                    </div>*@
+
+                    <div class="col-12">
+                        <button type="submit" value="Create" class="form__btn">publish</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+<!-- end form -->
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

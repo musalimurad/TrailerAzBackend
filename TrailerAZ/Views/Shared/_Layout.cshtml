@@ -1,0 +1,166 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trailer AZ</title>
+    <link rel="icon" href="~/assets/img/favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="~/assets/css/bootstrap.css">
+ 
+
+    <link rel="stylesheet" href="~/assets/slick/slick.css">
+    <link rel="stylesheet" href="~/assets/slick/slick-theme.css">
+    <script async custom-element="amp-iframe" src="https://cdn.ampproject.org/v0/amp-iframe-0.1.js"></script>
+    <link rel="stylesheet" href="~/assets/css/index.css">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+    @await RenderSectionAsync("Styles", required: false)
+
+
+</head>
+<body>
+    <!-- Header-Start -->
+
+    <header class="Header">
+
+        <div class="container">
+            <div class="d-flex  justify-content-between align-items-center">
+
+                <div class="Header-Ico navbar-expand-md">
+                    <a href="/">
+                        <h1>Tr <i class="fal fa-play"></i> iler</h1>
+                    </a>
+                </div>
+                <div class="navbar Header-Nav navbar">
+                    <ul>
+                        <li><a href="/Film/Index"><i class="fal fa-video"></i> Film And Movies</a></li>
+                        <li><a href="/TvShow/Index"><i class="fal fa-photo-video"></i> TV Shows</a></li>
+                        <li><a href="/Cartoon/Index"><i class="fas fa-golf-ball"></i> Cartoons</a></li>
+                        <li><a href="/Actor/Index"><i class="fal fa-users-crown"></i> Actors</a></li>
+                        <li><a href="/About/Index"><i class="fad fa-award"></i> About US</a></li>
+                    </ul>
+                </div>
+                <div class="profil">
+                    <div class="d-flex align-items-center justify-content-center">
+                        <a href="#"><i class="fad fa-user-circle"></i></a>
+                        <a href="#">Username</a>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </header>
+    <header class="Responsive-Header">
+        <div class="container">
+            <div class="row">
+                <div class="All-Responsive navbar">
+                    <div class="Responsive-Logo ">
+                        <a href="index.html">
+                            <h4>Tr <i class="fal fa-play"></i> iler</h4>
+                        </a>
+                    </div>
+                    <div class="Navbar-Ico  ">
+                        <ul class="navbar-button">
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div id="Menu-content" class="NavMenu col-12 col-sm-12 col-md-12">
+        <div class="profil">
+            <div class="d-flex align-items-center justify-content-center">
+                <a href="#"><i class="fad fa-user-circle"></i></a>
+                <a href="#">Username</a>
+            </div>
+        </div>
+        <ul>
+            <li><a href="/Film/Index"><i class="fal fa-video"></i> Film And Movies</a></li>
+            <li><a href="/TvShow/Index"><i class="fal fa-photo-video"></i> TV Shows</a></li>
+            <li><a href="/Cartoon/Index"><i class="fas fa-golf-ball"></i> Cartoons</a></li>
+            <li><a href="/Actor/Index"><i class="fal fa-users-crown"></i> Actors</a></li>
+            <li><a href="/About/Index"><i class="fad fa-award"></i> About US</a></li>
+        </ul>
+
+    </div>
+    <!-- Header-End -->
+    <!-- Account start -->
+    <section class="account">
+        <a id="login" href="login-register.html">Login</a>
+        <a id="register" href="login-register.html">Register</a>
+    </section>
+    <!-- Account End -->
+
+
+    @RenderBody()
+
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="copyRight col-12 col-sm-12 col-md-12 ">
+                    <h4>info@Trailer.az</h4>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <p>
+                        Copyright © 2021, Created By <a href="#">Musalimurat</a> && <a target="_blank"
+                                                                                       href="https://websuper.az/">Websuper</a> company
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="overlay col-12 col-sm-12 col-md-12 col-xl-12"></div>
+
+    </footer>
+
+    <!-- Footer End -->
+
+    <div class="flex-container">
+
+        <div style="background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(https://source.unsplash.com/random/sig=1) " class="flex-slide home">
+            <div class="flex-title flex-title-home"><a href="/">Home</a></div>
+            <div class="flex-about flex-about-home"><p>Click here to navigate to the home section of the website</p></div>
+        </div>
+        <div style="background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(https://source.unsplash.com/random/sig=2) " class="flex-slide about">
+            <div class="flex-title"><a href="/TvShow/Index">TvShow</a></div>
+            <div class="flex-about"></div>
+        </div>
+        <div style="background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(https://source.unsplash.com/random/sig=3) " class="flex-slide work">
+            <div class="flex-title"><a href="/Film/Index">Film</a></div>
+            <div class="flex-about">
+
+            </div>
+        </div>
+        <div style="background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(https://source.unsplash.com/random/sig=4) " class="flex-slide contact">
+            <div class="flex-title"><a href="/Actor/Index">Actor</a></div>
+            <div class="flex-about">
+
+
+            </div>
+        </div>
+    </div>
+
+    <svg id="up-arrow" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="30" height="30" viewBox="0 0 172 172"
+         style=" fill:#000000;">
+        <g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter"
+           stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none"
+           font-size="none" text-anchor="none" style="mix-blend-mode: normal">
+            <path d="M0,172v-172h172v172z" fill="none"></path>
+            <g fill="#1a4da7">
+                <path d="M86,17.79125l-73.66437,73.66438c-1.80063,1.72 -2.52625,4.28656 -1.89469,6.70531c0.63156,2.40531 2.51281,4.28656 4.91813,4.91813c2.41875,0.63156 4.98531,-0.09406 6.70531,-1.89469l63.93562,-63.93563l63.93563,63.93563c1.72,1.80062 4.28656,2.52625 6.70531,1.89469c2.40531,-0.63156 4.28656,-2.51281 4.91813,-4.91813c0.63156,-2.41875 -0.09406,-4.98531 -1.89469,-6.70531zM86,62.51125l-73.66437,73.66438c-1.80063,1.72 -2.52625,4.28656 -1.89469,6.70531c0.63156,2.40531 2.51281,4.28656 4.91813,4.91813c2.41875,0.63156 4.98531,-0.09406 6.70531,-1.89469l63.93562,-63.93563l63.93563,63.93563c1.72,1.80062 4.28656,2.52625 6.70531,1.89469c2.40531,-0.63156 4.28656,-2.51281 4.91813,-4.91813c0.63156,-2.41875 -0.09406,-4.98531 -1.89469,-6.70531z">
+                </path>
+            </g>
+        </g>
+    </svg>
+    <script src="~/assets/js/Jquery.js"></script>
+    <script type="text/javascript" src="~/assets/slick/slick.min.js"></script>
+    <script src="~/assets/js/bootstrap.js"></script>
+    <script src="~/assets/js/app.js"></script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,326 @@
+﻿@section Styles{
+    <link rel="stylesheet" href="~/assets/css/film.css">
+
+}
+
+@model FilmDetailVM
+<!-- film filter start -->
+
+<section class="filter">
+    <div class="container">
+        <div class="col-12">
+            <div class="left">
+
+                <select class="year-select" name="" id="">
+                    <option hidden selected value="">Select year</option>
+                    <option value="2000">2000</option>
+                    <option value="2001">2001</option>
+                    <option value="2002">2002</option>
+                    <option value="2003">2003</option>
+                    <option value="2004">2004</option>
+                    <option value="2005">2005</option>
+                    <option value="2006">2006</option>
+                    <option value="2007">2007</option>
+                    <option value="2008">2008</option>
+                    <option value="2009">2009</option>
+                    <option value="2010">2010</option>
+                    <option value="2011">2011</option>
+                    <option value="2012">2012</option>
+                    <option value="2013">2013</option>
+                    <option value="2014">2014</option>
+                    <option value="2015">2015</option>
+                    <option value="2016">2016</option>
+                    <option value="2017">2017</option>
+                    <option value="2018">2018</option>
+                    <option value="2019">2019</option>
+                    <option value="2020">2020</option>
+                    <option value="2021">2021</option>
+
+                </select>
+
+                <select class="type-select" name="" id="">
+                    <option selected hidden value="">Select Type of</option>
+                    <option value="animasyon">Animasyon</option>
+                    <option value="aksiyon">Aksiyon</option>
+                    <option value="belge">Belgesel</option>
+                    <option value="bilimkurgu">Bilimkurgu</option>
+                    <option value="biyografi">Biyografi</option>
+                    <option value="casusluk">Casusluk</option>
+                    <option value="cizgiroman">Çizgi roman</option>
+                    <option value="dini">Dini</option>
+                    <option value="erotik">Erotik</option>
+                    <option value="fantastik">Fantastik</option>
+                    <option value="felaket">Felaket</option>
+                    <option value="gerilim">Gerilim</option>
+                    <option value="komedi">Komedi</option>
+                    <option value="korku">Korku</option>
+                    <option value="macera">Macera</option>
+                    <option value="muzikal">Müzikal</option>
+                    <option value="romantik">Romantik</option>
+                    <option value="savas">Savaş</option>
+                    <option value="spor">Spor</option>
+                    <option value="tarihi">Tarihi</option>
+                    <option value="uzay">Uzay</option>
+                    <option value="videooyunu">Video oyunu</option>
+                    <option value="western">Western</option>
+                    <option value="genclik">Gençlik</option>
+
+
+
+                </select>
+                <select class="platform-select" name="" id="" class="platfrom">
+                    <option selected hidden value="">Platform</option>
+                    <option value="netflix">Netflix</option>
+                    <option value="exxen">Exxen</option>
+                    <option value="blutv">BluTv</option>
+                    <option value="puhu">Puhu Tv</option>
+                    <option value="filmbox">FilmBox live</option>
+
+                </select>
+                <select class="country-select" name="" id="">
+                    <option selected hidden value="">Country</option>
+                    <option value="">Azerbaijan</option>
+                    <option value="">America</option>
+                    <option value="">Turkey</option>
+                    <option value="">Russia</option>
+                    <option value="">Italy</option>
+                    <option value="">France</option>
+                    <option value="">Spain</option>
+                </select>
+
+            </div>
+        </div>
+
+        <div class="filter-btn">
+            <button class="search-button" type="submit">Search</button>
+            <button class="reset" type="reset">Clear</button>
+        </div>
+        <div class="search">
+            <div class="input-bar">
+                <label for="search-text" id="search-label">Type <span>or dictate</span> to search</label>
+                <input type="search" name="search" id="search-text" autocomplete="off" />
+                <button id="dictate" title="Dictate">
+                    <i class="fa fa-microphone"></i>
+                    <svg width="1.25rem" height="1.25rem" viewBox="0 0 100 100">
+                        <g stroke="#fff" stroke-width="15">
+                            <path d="M20,20 20,80">
+                                <animate attributeName="d" values="M20,40 20,60;M20,20 20,80;M20,40 20,60" dur="1s"
+                                         repeatCount="indefinite" />
+                            </path>
+                            <path d="M50,10 50,90">
+                                <animate attributeName="d" values="M50,10 50,90;M50,40 50,60;M50,10 50,90" dur="1s"
+                                         repeatCount="indefinite" />
+                            </path>
+                            <path d="M80,20 80,80">
+                                <animate attributeName="d" values="M80,40 80,60;M80,20 80,80;M80,40 80,60" dur="1s"
+                                         repeatCount="indefinite" />
+                            </path>
+                        </g>
+                    </svg>
+                    <span class="a11y-hidden">Dictate new search</span>
+                </button>
+                <button id="search" title="Search">
+                    <i class="fa fa-search"></i>
+                    <span class="a11y-hidden">Search</span>
+                </button>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+<!-- film filter end -->
+<!-- video slider start -->
+@*@if (Model.GetFilms != null)
+    {
+        <div style="@(Model.GetFilms.Count==0? "display:none": null)" class="tag-video col-12 col-sm-12 col-md-12 col-xl-12">
+            <div class="container">
+                <div class="row">
+                    <iframe id="playerid" width="700" height="450" src="@Model.GetFilms[0].TrailerLink"
+                            title="TrailerAZ video player" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen></iframe>
+
+                    <i onclick="toggle();" class="far fa-times-circle exit"></i>
+                </div>
+            </div>
+        </div>
+    }*@
+
+
+
+<div style="@(Model.GetFilms.Count==0? "display:none": null)" class="video-slider">
+
+    @foreach (var film in Model.GetFilms)
+    {
+
+        <div onclick="toggle();" class="intern-video">
+            <a style="text-decoration:none;" href="@Url.Action("Details","Film", new {id=film.ID })">
+                <img src="@film.Photo">
+                <p>@film.Name</p>
+            </a>
+
+        </div>
+    }
+
+
+
+</div>
+
+
+
+<!-- video slider end -->
+<!-- Trending start -->
+@if (Model.GetFilmsIsTrending.Count != 0)
+{
+    <section style="@(Model.GetFilmsIsTrending.Count==0? "display:none;": null)" id="PluginOne" class="trending-slider">
+        <div class="container">
+            <div class="row">
+                <div class="card-name">
+                    <h3>Trending Films</h3>
+                </div>
+                <div class="all">
+                    @foreach (var film in Model.GetFilmsIsTrending)
+                    {
+                        <div class="card-film">
+
+                            <img src="@film.Photo"
+                                 alt="">
+                            <div class="card-text">
+                                <a href="@Url.Action("Details","Film", new {id=film.ID })"><i class="play-btn fad fa-play-circle"></i></a>
+                                <h5 style="display: none;">@film.Name</h5>
+                            </div>
+                        </div>
+                    }
+
+
+                </div>
+            </div>
+        </div>
+    </section>
+}
+
+
+<!-- Trending end -->
+<!-- most start -->
+@if (Model.GetFilmIsMostView.Count != 0)
+{
+    <section style="@(Model.GetFilmIsMostView.Count==0? "display:none;": null)" id="PluginOne" class="trending-slider">
+        <div class="container">
+            <div class="row">
+                <div class="card-name">
+                    <h3>Most viewed Films</h3>
+                </div>
+                <div class="all">
+                    @foreach (var film in Model.GetFilmIsMostView)
+                    {
+                        <div class="card-film">
+
+                            <img src="@film.Photo"
+                                 alt="">
+                            <div class="card-text">
+                                <a href="@Url.Action("Details", "Film", new { id=film.ID })"><i class="play-btn fad fa-play-circle"></i></a>
+                                <h5 style="display: none;">@film.Name</h5>
+                            </div>
+                        </div>
+                    }
+
+
+                </div>
+            </div>
+        </div>
+    </section>
+}
+
+
+<!-- most end -->
+<!-- new start -->
+@if (Model.GetFilmIsNew.Count != 0)
+{
+    <section style="@(Model.GetFilmIsNew.Count==0? "display:none": null)" id="PluginOne" class="trending-slider">
+        <div class="container">
+            <div class="row">
+                <div class="card-name">
+                    <h3>New Films</h3>
+                </div>
+                <div class="all">
+                    @foreach (var film in Model.GetFilmIsNew)
+                    {
+                        <div class="card-film">
+
+                            <img src="@film.Photo"
+                                 alt="">
+                            <div class="card-text">
+                                <a href="@Url.Action("Details", "Film", new {id=film.ID })"><i class="play-btn fad fa-play-circle"></i></a>
+                                <h5 style="display: none;">@film.Name</h5>
+                            </div>
+                        </div>
+                    }
+
+
+                </div>
+            </div>
+        </div>
+    </section>
+}
+
+
+<!-- new end -->
+<!-- film Start -->
+
+<section style="@(Model.AllFilms.Count==0? "display:none;": null)" class="tv-show">
+    <div class="container">
+        <div class="row">
+            <div class="movie-head">
+                <h1>All Films</h1>
+            </div>
+
+            <div class="movie-content">
+                <div class="container">
+                    <div class="row">
+                        @foreach (var film in Model.AllFilms)
+                        {
+                            <div class="movie-card col-6 col-sm-4 col-md-4 col-lg-4 col-xl-4">
+                                <a href="@Url.Action("Details", "Film", new {id=film.ID })">
+                                    <div class="movie-img">
+                                        <img class="img-fluid"
+                                             src="@film.Photo" alt="">
+                                        <i class="fas fa-eye"></i>
+                                    </div>
+                                </a>
+                                <div class="movie-text">
+                                    <h4>@film.Name</h4>
+                                </div>
+                            </div>
+                        }
+
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        @if (Model.AllFilms.Count < 3)
+        {
+            <div style="display:none;" class="load-more col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                <button>Load More</button>
+            </div>
+        }
+        else
+        {
+            <div class="load-more col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                <button>Load More</button>
+            </div>
+
+        }
+    </div>
+    </div>
+</section>
+
+<!-- film End -->
+
+@section Scripts{
+    <script src="~/assets/js/film.js"></script>
+
+}

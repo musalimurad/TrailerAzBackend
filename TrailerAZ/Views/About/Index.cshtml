@@ -1,0 +1,43 @@
+﻿@model AboutVM
+
+@section Styles{
+    <link rel="stylesheet" href="~/assets/css/about.css">
+
+}
+
+<!-- About start -->
+
+<section class="about">
+    <div class="container">
+        <div class="row">
+            <div class="head-text Header-Ico col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                <a style="text-decoration: none; color: #fff;" href="/">
+                    <h1>Trailer <i style="color: #1a4da7;" class="fas fa-film"></i> AZ - Best place for movies</h1>
+                </a>
+
+            </div>
+            <div class="text-content col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                <p>
+                   @Model.GetAbout.AboutDescription
+                </p>
+            </div>
+            <form action="" class="contact col-12 col-sm-12 col-md-12 col-xl-12 col-lg-12">
+                <h2>Contact US</h2>
+                <textarea placeholder="Enter your message..." name="" id="" cols="30" rows="6"></textarea>
+                <input class="email" placeholder="Please enter your email..." type="email" name="" id="">
+
+                <input class="submit" type="submit" value="Send Message">
+            </form>
+
+
+        </div>
+    </div>
+</section>
+
+<!-- About End -->
+
+@section Scripts{
+
+    <script src="~/assets/js/about.js"></script>
+
+}

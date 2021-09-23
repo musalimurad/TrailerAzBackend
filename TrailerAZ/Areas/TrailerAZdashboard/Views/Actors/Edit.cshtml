@@ -1,0 +1,155 @@
+﻿@model Entities.Actor
+
+@*<h1>Edit</h1>
+
+    <h4>Actor</h4>
+    <hr />
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="Edit">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="Name" class="control-label"></label>
+                    <input asp-for="Name" class="form-control" />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Wikipedia" class="control-label"></label>
+                    <input asp-for="Wikipedia" class="form-control" />
+                    <span asp-validation-for="Wikipedia" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="FacebookLink" class="control-label"></label>
+                    <input asp-for="FacebookLink" class="form-control" />
+                    <span asp-validation-for="FacebookLink" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="InstagramLink" class="control-label"></label>
+                    <input asp-for="InstagramLink" class="form-control" />
+                    <span asp-validation-for="InstagramLink" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="TwitterLink" class="control-label"></label>
+                    <input asp-for="TwitterLink" class="form-control" />
+                    <span asp-validation-for="TwitterLink" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="CoverPhoto" class="control-label"></label>
+                    <input asp-for="CoverPhoto" class="form-control" />
+                    <span asp-validation-for="CoverPhoto" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Photo" class="control-label"></label>
+                    <input asp-for="Photo" class="form-control" />
+                    <span asp-validation-for="Photo" class="text-danger"></span>
+                </div>
+                <div class="form-group form-check">
+                    <label class="form-check-label">
+                        <input class="form-check-input" asp-for="IsFeatured" /> @Html.DisplayNameFor(model => model.IsFeatured)
+                    </label>
+                </div>
+                <input type="hidden" asp-for="ID" />
+                <div class="form-group">
+                    <input type="submit" value="Save" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+    </div>*@
+
+
+<!-- main title -->
+<div class="col-12">
+    <div class="main__title">
+        <h2>Edit Actor</h2>
+    </div>
+</div>
+<!-- end main title -->
+<!-- form -->
+<div class="col-12">
+    <form class="form" method="post" enctype="multipart/form-data">
+        <div class="row">
+            <div class="col-12 col-md-5 form__cover">
+                <div class="row">
+                    <div class="col-12 col-sm-6 col-md-12">
+                        <div class="form__img">
+                            <label for="form__img-upload">Upload cover</label>
+                            <input  asp-for="CoverPhoto" id="form__img-upload" name="CoverPhoto" type="file" accept=".png, .jpg, .jpeg">
+                            <img id="form__img" src="#" alt=" ">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-md-7 form__content">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="form__group">
+                            <input asp-for="Name" type="text" class="form__input" name="Name" placeholder="Fullname">
+                        </div>
+                    </div>
+
+                    <div class="col-12">
+                        <div class="form__group">
+                            <textarea asp-for="Wikipedia" id="text" class="form__textarea" placeholder="Wikipedia"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-sm-6 col-lg-3">
+                        <div class="form__group">
+                            <input asp-for="FacebookLink" type="text" class="form__input" placeholder="Facebook Link">
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-sm-6 col-lg-3">
+                        <div class="form__group">
+                            <input asp-for="InstagramLink" type="text" class="form__input" placeholder="Instagram Link">
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-lg-3">
+                        <div class="form__group">
+                            <input asp-for="TwitterLink" type="text" class="form__input" placeholder="Twitter Link">
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-lg-3">
+                        @*<label style="color:white;" for="type2">IsFeatured?</label>*@
+
+                        <div class="form__group">
+                            <select asp-for="IsFeatured" class="js-example-basic-multiple" id="quality">
+
+                                <option disabled>IsFeatured?</option>
+                                <option value="True">Yes</option>
+                                <option value="False">no</option>
+
+
+                            </select>
+
+
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="form__gallery">
+                            <label id="gallery1" for="form__gallery-upload">Upload photos</label>
+                            <input asp-for="Photo"  data-name="#gallery1" id="form__gallery-upload" name="Photo" class="form__gallery-upload" type="file" accept=".png, .jpg, .jpeg" multiple>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="row">
+
+
+                    <div class="col-12">
+                        <button type="submit" value="Save" class="form__btn">publish</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+   <div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+<!-- end form -->
+
+
+

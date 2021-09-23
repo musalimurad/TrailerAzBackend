@@ -1,0 +1,391 @@
+﻿@model SerialVM
+
+@{
+    <input type="hidden" value="@Model.SerialId" class="serialId" />
+}
+@section Styles{
+
+    <link rel="stylesheet" href="~/assets/css/filmDetail.css">
+
+}
+<!-- main start -->
+<main>
+
+    <!-- movie-information start -->
+    @{ var serial = Model.Serial == null ? Model.Serie.Serial : Model.Serial;}
+    <section style="background-image:url(@serial.CoverPhoto)" id="Player" class="movie-information">
+        <div class="container">
+            <div class="row">
+                <div class="all-inform">
+                    <div class="play-ico">
+                        <i onclick="toggle();" class="fad fa-play-circle"></i>
+                        <span>watch trailer</span>
+                    </div>
+                    <div class="movie-head">
+                        <h5>@serial.Name</h5>
+                        <div class="content">
+                            <span><i class="fas fa-star"></i>@serial.Rating</span>
+                            @{
+                                var categoryList = Model.serialToCategories.Select(x => x.Category.CategoryName).Distinct().ToList();
+                            }
+                            <ul>
+                                <li>
+                                    @foreach (var item in categoryList)
+                                    {
+                                        @item <span> &nbsp;</span>;
+                                    }
+                                </li>
+
+                                <li>@Convert.ToDateTime(serial.Year).ToString("yyyy")</li>
+
+                                <li>@Model.Serie.Duration</li>
+                                <li>@serial.AgeLimit +</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="overlay"></div>
+
+            </div>
+        </div>
+    </section>
+    @if (Model.Serial != null || Model.Serie != null)
+    {
+        <div class="tag-video col-12 col-sm-12 col-md-12 col-xl-12">
+            <div class="container">
+                <div class="row">
+
+                    <iframe id="playerid" width="700" height="450" src="@(Model.Serial!=null?Model.Serial.SerialSeasons[0].TrailerLink:Model.Serie.TrailerLink)"
+                            title="TrailerAZ video player" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen></iframe>
+
+                    <i onclick="toggle();" class="far fa-times-circle exit"></i>
+                </div>
+            </div>
+        </div>
+    }
+
+
+    <!-- movie-information end -->
+    <!-- movie-on start -->
+    <section class="movie-on">
+
+        <div class="container">
+
+            @if (Model.Serie != null)
+            {
+                <iframe id="playerid" width="700" height="450" src="@(Model.Serie.MainLink)"
+                        title="TrailerAZ video player" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen></iframe>
+            }
+
+            <div class="col-12 col-sm-12 col-lg-6 col-xl-6 col-xxl-6 col-md-6">
+                <div class="movie-about">
+                    <p>
+                        @serial.Description
+                    </p>
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="add-favorite">
+                    <i class="fal fa-bookmark"></i>
+                    <i class="fal fa-heart"></i>
+                    <i class="far fa-retweet-alt"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- movie-on end -->
+    <!-- movie-series start -->
+    
+        <section class="all-series">
+            <div class="container">
+                <div class="row">
+                    <div class="movie-series">
+                        <div class="series-head">
+                            <h4>next series</h4>
+                            <select class="seasnID">
+                                <option hidden value="">select season</option>
+                                @foreach (var season in serial.SerialSeasons)
+                                {
+                                    <option value="@season.Season">season @season.Season</option>
+                                }
+                            </select>
+                        </div>
+
+                        <div class="card-det">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    <!-- movie-series end -->
+    <!-- same category films start -->
+    @if (Model.SameCategorySerial.Count != 0)
+    {
+        <div class="carousel" data-gap="20" data-bfc>
+            <h2>Same categories films</h2>
+
+            <figure style=" @(Model.SameCategorySerial.Count==0? "display:none;" : null)">
+                @foreach (var sameSerial in Model.SameCategorySerial)
+                {
+                    <img src="@sameSerial.Serial.Photo" alt="">
+                }
+
+
+
+            </figure>
+            <div style=" @(Model.SameCategorySerial.Count==0? "display:none;" : null)" class="films">
+                @foreach (var sameSerial in Model.SameCategorySerial)
+                {
+                    <a href="@Url.Action("Details", "Serial", new {id=sameSerial.SerialID })">@sameSerial.Serial.Name</a>
+
+                }
+
+            </div>
+
+            @if (Model.SameCategorySerial.Count <= 1)
+            {
+                <nav style="display:none;">
+                    <button class="nav prev">Prev</button>
+                    <button class="nav next">Next</button>
+                </nav>
+            }
+            else
+            {
+                <nav>
+                    <button class="nav prev">Prev</button>
+                    <button class="nav next">Next</button>
+                </nav>
+            }
+
+        </div>
+    }
+
+
+
+    <!-- same category films end -->
+    <!--  same category-phone-slider start -->
+    @if (Model.SameCategorySerial.Count != 0)
+    {
+        <section style=" @(Model.SameCategorySerial.Count==0? "display:none;" : null)" class="categorySame-phone">
+            <div class="container">
+                <div class="row">
+                    <div class="movie-category">
+                        <div class="category-head">
+                            <h4>Same Categories Films</h4>
+
+                        </div>
+                        <div class="category-card">
+                            @foreach (var sameSerial in Model.SameCategorySerial)
+                            {
+                                <div class="card-detail">
+                                    <div class="card-film">
+
+                                        <img src="@sameSerial.Serial.Photo"
+                                             alt="">
+                                        <div class="card-text">
+                                            <a href="@Url.Action("Details", "Serial", new {id=sameSerial.SerialID })"><i class="play-btn fad fa-play-circle"></i></a>
+                                        </div>
+
+                                    </div>
+                                    <div class="category-altHead">
+                                        <h6>@sameSerial.Serial.Name</h6>
+                                    </div>
+                                </div>
+                            }
+
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    }
+
+
+
+    <!-- same category-phone-slider end -->
+    <!-- feature films start -->
+
+    <section style=" @(Model.GetserialIsFeatured.Count==0? "display:none;" : null)" id="PluginOne" class="feature-slider">
+        <div class="container">
+            <div class="row">
+                <div class="card-name">
+                    <h3>Featured Film & Movie</h3>
+                </div>
+                <div class="all">
+                    @foreach (var mySerial in Model.GetserialIsFeatured)
+                    {
+                        <div class="card-film">
+
+                            <img src="@mySerial.Photo"
+                                 alt="">
+                            <div class="card-text">
+                                <a href="@Url.Action("Details","Serial", new {id=mySerial.ID })"><i class="play-btn fad fa-play-circle"></i></a>
+                                <h5 style="display: none;">@mySerial.Name</h5>
+                            </div>
+                        </div>
+
+                    }
+
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- feature films end -->
+    <!-- Comments start -->
+    <!-- Comments end -->
+
+
+
+</main>
+
+
+
+<!-- main end -->
+<div class="container">
+    <div id="disqus_thread"></div>
+
+</div>
+<div class="container">
+    <amp-iframe width=50 height=240
+                src="https://example.com/amp#hash"
+                layout="responsive"
+                sandbox="allow-scripts allow-same-origin allow-modals allow-popups allow-forms"
+                resizable>
+        <div aria-label="Load more"
+             role=button
+             tabindex=0
+             overflow
+             style=" display:block;font-size:12px;font-weight:500;font-family:Helvetica Neue, arial, sans-serif;text-align:center;line-height:1.1;padding:12px 16px;border-radius:4px;background:rgba(29,47,58,0.6);color:rgb(255,255,255)">
+            Load more
+        </div>
+    </amp-iframe>
+</div>
+
+
+@section Scripts{
+
+    <script>
+        $(".seasnID").change(function () {
+
+            const seasonId = $(this).val();
+            $.ajax({
+                url: "/Serial/FindSeriaForSeason",
+                method: "POST",
+                data: { seasonId, id: $(".serialId").val() },
+                success: function (res) {
+                    $(".card-det").html(res)
+                    setTimeout(function () {
+                        $('.card-det').slick({
+                            slidesToShow: 4,
+                            autoplay: true,
+                            speed: 1000,
+                            centerPadding: '80px',
+                            arrows: false,
+                            infinite: true,
+                            dots: false,
+                            responsive: [
+                                {
+                                    breakpoint: 769,
+                                    settings: {
+                                        arrows: false,
+                                        dots: false,
+                                        centerMode: true,
+                                        centerPadding: '40px',
+                                        slidesToShow: 2
+                                    }
+                                },
+                                {
+                                    breakpoint: 992,
+                                    settings: {
+                                        arrows: false,
+                                        dots: false,
+                                        centerMode: true,
+                                        centerPadding: '40px',
+                                        slidesToShow: 3
+                                    }
+                                },
+
+                                {
+                                    breakpoint: 430,
+                                    settings: {
+                                        arrows: false,
+                                        dots: false,
+                                        centerMode: true,
+                                        centerPadding: '40px',
+                                        slidesToShow: 1
+                                    }
+                                }
+                            ]
+                        });
+
+                    }, 500)
+                   
+                }
+            })
+        })
+    </script>
+    <script src="~/assets/js/Jquery.js"></script>
+    <script type="text/javascript" src="~/assets/slick/slick.min.js"></script>
+    <script src="~/assets/js/bootstrap.js"></script>
+    <script src="~/assets/js/filmDetail.js"></script>
+
+
+
+
+
+    <script>
+        window.addEventListener('message', receiveMessage, false);
+        function receiveMessage(event) {
+            if (event.data) {
+                var msg;
+                try {
+                    msg = JSON.parse(event.data);
+                } catch (err) {
+                    // Do nothing
+                }
+                if (!msg) {
+                    return false;
+                }
+                if (msg.name === 'resize' || msg.name === 'rendered') {
+                    window.parent.postMessage({
+                        sentinel: 'amp',
+                        type: 'embed-size',
+                        height: msg.data.height
+                    }, '*');
+                }
+            }
+        }
+    </script>
+    <script>
+        /**
+        *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+        *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+        */
+        var disqus_config = function () {
+            this.page.url = window.location;
+            this.page.identifier = window.location.hash;
+        };
+        (function () {  // DON'T EDIT BELOW THIS LINE
+            var d = document, s = d.createElement('script');
+
+            s.src = '//traileraz.disqus.com/embed.js';
+
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+    </script>
+
+
+
+}

@@ -1,0 +1,286 @@
+﻿@model FilmDetailVM
+ 
+@section Styles{
+    <link rel="stylesheet" href="~/assets/css/filmDetail.css">
+}
+
+
+<!-- main start -->
+<main>
+
+    <!-- movie-information start -->
+
+    <section style="background-image:url(@Model.ByFilm.CoverPhoto)" id="Player" class="movie-information">
+        <div class="container">
+            <div class="row">
+                <div class="all-inform">
+                    <div class="play-ico">
+                        <i onclick="toggle();" class="fad fa-play-circle"></i>
+                        <span>watch trailer</span>
+                    </div>
+                    <div class="movie-head">
+                        <h5>@Model.ByFilm.Name</h5>
+                        <div class="content">
+                            <span><i class="fas fa-star"></i>@Model.ByFilm.Rating</span>
+                            <ul>
+                                @{ 
+                                  var filmCat=  Model.filmToCategories.Select(x => x.Category.CategoryName).Distinct().ToList();
+                                }
+                                <li>
+                                    @foreach (var item in filmCat)
+                                    {
+                                        @item <span> &nbsp;</span>;
+                                    }
+                                </li>
+                                <li>@Model.ByFilm.Year</li>
+                                <li>@Model.ByFilm.Duration</li>
+                                <li>@Model.ByFilm.AgeLimit +</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="overlay"></div>
+
+            </div>
+        </div>
+    </section>
+    <div class="tag-video col-12 col-sm-12 col-md-12 col-xl-12">
+        <div class="container">
+            <div class="row">
+                <iframe id="playerid" width="700" height="450" src="@Model.ByFilm.TrailerLink"
+                        title="TrailerAZ video player" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen></iframe>
+
+                <i onclick="toggle();" class="far fa-times-circle exit"></i>
+            </div>
+        </div>
+    </div>
+
+    <!-- movie-information end -->
+    <!-- movie-on start -->
+    <section class="movie-on">
+
+        <div class="container">
+
+
+            <iframe id="playerid" src="@Model.ByFilm.MainLink" allowfullscreen="true" scrolling="no" style="  height:390px; border:none; margin:auto; ; overflow:hidden; z-index:9;" width="70%"></iframe>
+            <!-- <iframe id="playerid" width="100%" height="390" src="hhttps://vidmoly.net/embed-ydjbid4y9qv0.html"
+                title="TrailerAZ video player" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen>
+            </iframe> -->
+            <div class="col-12 col-sm-12 col-lg-6 col-xl-6 col-xxl-6 col-md-6">
+                <div class="movie-about">
+                    <p>
+                        @Model.ByFilm.Description
+                    </p>
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="add-favorite">
+                    <i class="fal fa-bookmark"></i>
+                    <i class="fal fa-heart"></i>
+                    <i class="far fa-retweet-alt"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- movie-on end -->
+    <!-- same category films start -->
+    @if (Model.SameCategoryFilms.Count != 0)
+    {
+        <div style="@(Model.SameCategoryFilms.Count==0? "display:none;": null)" class="carousel" data-gap="20" data-bfc>
+            <h2>Same categories films</h2>
+
+            <figure>
+                @foreach (var sameFilm in Model.SameCategoryFilms)
+                {
+                    <img src="@sameFilm.Film.CoverPhoto" alt="">
+                }
+
+
+            </figure>
+            <div class="films">
+
+                @foreach (var SameFilm in Model.SameCategoryFilms)
+                {
+                    <a href="@Url.Action("Details","Film", new { id=SameFilm.FilmID})">@SameFilm.Film.Name</a>
+
+                }
+
+            </div>
+            @if (Model.SameCategoryFilms.Count <= 1)
+            {
+                <nav style="display:none;">
+                    <button class="nav prev">Prev</button>
+                    <button class="nav next">Next</button>
+                </nav>
+            }
+            else
+            {
+                <nav>
+                    <button class="nav prev">Prev</button>
+                    <button class="nav next">Next</button>
+                </nav>
+            }
+
+        </div>
+    }
+
+
+
+    <!-- same category films end -->
+    <!--  same category-phone-slider start -->
+    @if (Model.SameCategoryFilms.Count != 0)
+    {
+        <section style="@(Model.SameCategoryFilms.Count==0? "display:none;": null)" class="categorySame-phone">
+            <div class="container">
+                <div class="row">
+                    <div class="movie-category">
+                        <div class="category-head">
+                            <h4>Same Categories Films</h4>
+
+                        </div>
+                        <div class="category-card">
+                            @foreach (var sameFilm in Model.SameCategoryFilms)
+                            {
+                                <div class="card-detail">
+                                    <div class="card-film">
+
+                                        <img src="@sameFilm.Film.Photo"
+                                             alt="">
+                                        <div class="card-text">
+                                            <a href="@Url.Action("Details", "Film", new {id=sameFilm.FilmID })"><i class="play-btn fad fa-play-circle"></i></a>
+                                        </div>
+
+                                    </div>
+                                    <div class="category-altHead">
+                                        <h6>@sameFilm.Film.Name</h6>
+                                    </div>
+                                </div>
+                            }
+
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    }
+
+
+
+
+    <!-- same category-phone-slider end -->
+    <!-- feature films start -->
+
+    <section style="@(Model.GetFilmsIsFeatured.Count==0? "display:none;": null)" id="PluginOne" class="feature-slider">
+        <div class="container">
+            <div class="row">
+                <div class="card-name">
+                    <h3>Featured Film & Movie</h3>
+                </div>
+                <div class="all">
+                    @foreach (var film in Model.GetFilmsIsFeatured)
+                    {
+                        <div  class="card-film">
+
+                            <img src="@film.Photo"
+                                 alt="">
+                            <div class="card-text">
+                                <a href="@Url.Action("Details", "Film", new { id=film.ID})"><i class="play-btn fad fa-play-circle"></i></a>
+                                <h5 style="display: none;">@film.Name</h5>
+                            </div>
+                        </div>
+                    }
+
+
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- feature films end -->
+    <!-- Comments start -->
+    <!-- Comments end -->
+
+
+
+</main>
+
+
+
+<!-- main end -->
+<div class="container">
+    <div id="disqus_thread"></div>
+
+</div>
+
+<script>
+    window.addEventListener('message', receiveMessage, false);
+    function receiveMessage(event) {
+        if (event.data) {
+            var msg;
+            try {
+                msg = JSON.parse(event.data);
+            } catch (err) {
+                // Do nothing
+            }
+            if (!msg) {
+                return false;
+            }
+            if (msg.name === 'resize' || msg.name === 'rendered') {
+                window.parent.postMessage({
+                    sentinel: 'amp',
+                    type: 'embed-size',
+                    height: msg.data.height
+                }, '*');
+            }
+        }
+    }
+</script>
+<script>
+    /**
+    *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+    *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+    */
+    var disqus_config = function () {
+        this.page.url = window.location;
+        this.page.identifier = window.location.hash;
+    };
+    (function () {  // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+
+        s.src = '//traileraz.disqus.com/embed.js';
+
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
+<div class="container">
+    <amp-iframe width=50 height=240
+                src="https://example.com/amp#hash"
+                layout="responsive"
+                sandbox="allow-scripts allow-same-origin allow-modals allow-popups allow-forms"
+                resizable>
+        <div aria-label="Load more"
+             role=button
+             tabindex=0
+             overflow
+             style=" display:block;font-size:12px;font-weight:500;font-family:Helvetica Neue, arial, sans-serif;text-align:center;line-height:1.1;padding:12px 16px;border-radius:4px;background:rgba(29,47,58,0.6);color:rgb(255,255,255)">
+            Load more
+        </div>
+    </amp-iframe>
+</div>
+<script async custom-element="amp-iframe" src="https://cdn.ampproject.org/v0/amp-iframe-0.1.js"></script>
+
+@section Scripts{
+    <script src="~/assets/js/filmDetail.js"></script>
+}
+
+

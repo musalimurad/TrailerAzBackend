@@ -1,0 +1,27 @@
+﻿@model IEnumerable<Entities.SerialSerie>
+
+
+
+
+
+@foreach (var seria in Model)
+{
+
+    <div class="card-detail">
+        <div class="card-film">
+            <img  src="@seria.Serial.Photo" alt="">
+            <div class="card-text">
+                <a href="@Url.Action("Details", "Serial", new { seriaId=seria.ID })"><i class="play-btn fad fa-play-circle"></i></a>
+            </div>
+        </div>
+        <div class="series-num">
+            <h6> serie @seria.Serie</h6>
+        </div>
+    </div>
+
+
+}
+
+
+
+

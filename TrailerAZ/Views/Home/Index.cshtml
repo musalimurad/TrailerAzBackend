@@ -1,0 +1,348 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+@model SerialVM
+
+@section Styles{
+    <link rel="stylesheet" href="~/assets/css/index.css">
+}
+
+<!-- Search section start -->
+
+<section class="search">
+    <div class="container">
+        <div class="row">
+            <div class="search-item ">
+                <input class="search-inp " type="search" name="Search-Film " id="" placeholder="I am Looking for...">
+                <input class="submit-btn " type="submit" value="search">
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Search section End -->
+<!-- main start -->
+
+<main>
+
+    <!-- Slider Start -->
+
+    <div class="demo-cont">
+        <!-- slider start -->
+        <div class="fnc-slider example-slider">
+            <div class="fnc-slider__slides">
+                @foreach (var slider in Model.HomeSliders)
+                {
+                    <!-- slide start -->
+                    <div class="fnc-slide m--blend-green m--active-slide">
+                        <div style="background-image: url(@slider.Photo)" class="fnc-slide__inner">
+                            <div class="fnc-slide__mask">
+                                <div style="background-image: url(@slider.Photo)" class="fnc-slide__mask-inner"></div>
+                            </div>
+                            <div class="fnc-slide__content">
+                                <h2 class="fnc-slide__heading">
+                                    <div class="fnc-slide__heading-line">
+                                        <span>@slider.Name</span>
+                                    </div>
+                                    <div class="fnc-slide__heading-line">
+                                        <span>@slider.SubName</span>
+                                    </div>
+                                </h2>
+                                <button type="button" class="fnc-slide__action-btn">
+                                    About US
+                                    <span data-text="More Than">View</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- slide end -->
+                }
+
+
+            </div>
+            <nav class="fnc-nav">
+                <div class="fnc-nav__bgs">
+                    <div class="fnc-nav__bg m--navbg-green m--active-nav-bg"></div>
+                    <div class="fnc-nav__bg m--navbg-dark"></div>
+                    <div class="fnc-nav__bg m--navbg-red"></div>
+                    <div class="fnc-nav__bg m--navbg-blue"></div>
+                </div>
+                <div class="fnc-nav__controls">
+                    @foreach (var slider in Model.HomeSliders)
+                    {
+                        <button class="fnc-nav__control">
+                            @slider.AllName
+                            <span class="fnc-nav__control-progress"></span>
+                        </button>
+                    }
+
+
+                </div>
+            </nav>
+        </div>
+        <!-- slider end -->
+        <div id="About" class="demo-cont__credits">
+            <div class="demo-cont__credits-close"></div>
+            <h2 class="demo-cont__credits-heading">Created By</h2>
+            <img src="https://www.compar.az/Photos/logocompar.png" alt="" class="demo-cont__credits-img" />
+            <h3 class="demo-cont__credits-name">
+                <a href="#" target="_blank" class="demo-cont__credits-link">
+                    Musalimurat
+                </a> && <a href="https://websuper.az/" target="_blank" class="demo-cont__credits-link">
+                    Websuper
+                </a> company
+            </h3>
+            <a href="#" target="_blank" class="demo-cont__credits-link"> instagram</a>
+            <h2 class="demo-cont__credits-heading">Based on</h2>
+            <a href="https://www.compar.az/" target="_blank" class="demo-cont__credits-link">
+                Concept by Compar
+                Academy
+            </a>
+            <h4 class="demo-cont__credits-blend">Global Blend Mode</h4>
+            <div class="colorful-switch">
+                <input type="checkbox" class="colorful-switch__checkbox js-activate-global-blending"
+                       id="colorful-switch-cb" />
+                <label class="colorful-switch__label" for="colorful-switch-cb">
+                    <span class="colorful-switch__bg"></span>
+                    <span class="colorful-switch__dot"></span>
+                    <span class="colorful-switch__on">
+                        <span class="colorful-switch__on__inner"></span>
+                    </span>
+                    <span class="colorful-switch__off"></span>
+                </label>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slider End -->
+    <!-- Home Slider start -->
+
+    <section style="background-color: #151F30; @(Model.Serials.Count==0? "display:none;" : null)" id="PluginOne" class="home-slider">
+        <div class="container">
+            <div class="row">
+                <div class="card-name">
+                    <h3>The Most view Tv Shows</h3>
+                </div>
+                <div class="all">
+
+                    @foreach (var serial in Model.Serials)
+                    {
+
+                        <div class="card-film">
+
+                            <img src="@serial.Photo"
+                                 alt="">
+                            <div class="card-text">
+                                <a href="@Url.Action("Details", "Serial", new {id=serial.ID })"><i class="play-btn fad fa-play-circle"></i></a>
+                                <h5 style="display: none;">@serial.Name</h5>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Home Slider end -->
+    <!-- Background Cover Start -->
+    <section class="background-cover col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12">
+        <div class="container">
+            <div class="row">
+                <div class="cover-text col-12 col-sm-12 col-md-12 col-xl-12">
+                    <h1>Choose the movie that suits your taste, watch it with us</h1>
+                </div>
+            </div>
+        </div>
+        <div class="overlay col-12 col-sm-12 col-md-12 col-xl-12"></div>
+    </section>
+    <!-- Background Cover End -->
+    <!-- Film-movie Start -->
+
+    <section class="film-movie">
+        <div class="container">
+            <div class="row">
+                <div class="movie-head">
+                    <h1>All Series</h1>
+                </div>
+
+                <div class="movie-content">
+                    <div class="container">
+                        <div class="row">
+
+                            <div id="filmArea" class="col-12">
+                                <div class="row">
+                                    @foreach (var serial in Model.AllSerials)
+                                    {
+                                        <div class="movie-card col-6 col-sm-4 col-md-4 col-lg-4 col-xl-4">
+                                            <a href="@Url.Action("Details", "Serial", new {id=serial.ID })">
+                                                <div class="movie-img">
+                                                    <img class="img-fluid"
+                                                         src="@serial.Photo"
+                                                         alt="">
+                                                    <i class="fas fa-eye"></i>
+                                                </div>
+                                            </a>
+                                            <div class="movie-text">
+                                                <h4>@serial.Name</h4>
+                                            </div>
+                                        </div>
+                                    }
+                                   
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div style="display:none;" class="load-more col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                <button class="btnLoad">Load more</button>
+            </div>
+
+
+            <div class="load-more col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                <button class="btnLoad">Load more</button>
+            </div>
+
+        </div>
+        </div>
+    </section>
+    <!-- film-movie End -->
+    <!-- New Film Start -->
+    @if (Model.Serial != null && Model.Serial.IsNew)
+    {
+        <section style="" id="Player" class="new-film col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12">
+            <div class="head-tag">
+                <h3><i class="fas fa-video"></i> Is New</h3>
+            </div>
+            <div class="tag-content">
+                <img src="@Model.Serial.CoverPhoto"
+                     alt="">
+                <div class="container">
+                    <div class="row">
+                        <div class="bottom">
+                            <i onclick="toggle();" class=" fad fa-play-circle"></i>
+                            <h5>@Model.Serial.Name</h5>
+                            <div class="col-md-6 col-xl-6 col-xxl-6">
+                                <p>
+                                    @Model.Serial.Description
+                                </p>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        @if (Model.Serial.SerialSeasons != null && Model.Serial.SerialSeasons.Count > 0)
+        {
+            <div class="tag-video col-12 col-sm-12 col-md-12 col-xl-12">
+                <div class="container">
+                    <div class="row">
+
+                        <iframe id="playerid" width="700" height="450" src="@Model.Serial.SerialSeasons[0].TrailerLink"
+                                title="TrailerAZ video player" frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                allowfullscreen></iframe>
+                        <i onclick="toggle();" class="far fa-times-circle exit"></i>
+                    </div>
+                </div>
+            </div>
+        }
+    }
+
+    <!-- New Film End -->
+    <!-- Actors start -->
+
+    <section class="actors">
+        <div class="container">
+            <div class="row">
+                <div class="detail-head col-12 col-sm-12 col-md-12 col-xl-12 col-lg-12">
+                    <h4>Actors</h4>
+                </div>
+                <div id="actorArea" class="col-12">
+                    <div class="row">
+                        @foreach (var actor in Model.Actors)
+                        {
+                            <div class="col-md-4 col-6 col-sm-4 col-lg-3 col-xl-3">
+                                <div class="actor-detail">
+                                    <div class="detail-img">
+                                        <img class="img-fluid"
+                                             src="@actor.Photo"
+                                             alt="">
+                                    </div>
+                                    <div class="detail-text">
+                                        <h5>@actor.Name</h5>
+                                        <p><a href="@Url.Action("Details", "Actor", new { id=actor.ID})">Read More...</a></p>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+
+
+
+                <div class="load-more col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                    <button class="onLoad">Load more</button>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+    <!-- Actors End -->
+</main>
+<!-- main end -->
+
+@section Scripts{
+
+    <script src="~/assets/js/index.js"></script>
+    <script>
+        let skipCount = 0;
+        $(".btnLoad").click(function () {
+            skipCount += 1;
+            $.ajax({
+                url: "/Home/FindFilm",
+                data: { skipCount },
+                type: "Json",
+                success: function (e) {
+                    console.log(e)
+                    $("#filmArea .row").append(e)
+                    if (e != null) {
+                        $(".btnLoad").fadeIn();
+
+                    }
+                    else {
+                        $(".btnLoad").fadeOut();
+                    }
+                }
+            })
+        })
+    </script>
+    <script>
+        let skipCount = 0;
+        $(".onLoad").click(function () {
+            skipCount += 1;
+            $.ajax({
+                url: "/Home/FindActor",
+                data: { skipCount },
+                type: "Json",
+                success: function (e) {
+                    console.log(e)
+                    $("#actorArea .row").append(e)
+                    if (e != null) {
+                        $(".onLoad").fadeIn();
+
+                    }
+                    else {
+                        $(".onLoad").fadeOut();
+                    }
+                }
+            })
+        })
+    </script>
+
+}
